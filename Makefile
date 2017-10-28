@@ -5,6 +5,7 @@ qa:
 	@make lint && npm run test
 
 build:
+	@docker login -u=$(DOCKER_USERNAME) -p=$(DOCKER_PASSWORD) quay.io
 	@docker build --tag $(SERVICE):$(TRAVIS_BUILD_NUMBER) .
 	@docker images
 
