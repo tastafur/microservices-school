@@ -18,6 +18,8 @@ before_install:
   - nvm use
   - node --version
   - SERVICE=$SERVICE make ensure-dependencies
+  - sleep 3
+  - docker ps
 
 script:
   - echo $SERVICE_ENV
