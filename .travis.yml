@@ -16,20 +16,16 @@ branches:
   only:
   - master
 
-before_install:
+before_script:
   - cd ./$SERVICE
-  - nvm install
-  - nvm use
-  - node --version
   - SERVICE=$SERVICE make ensure-dependencies
   - sleep 3
   - docker ps
 
 script:
-  - make qa
   - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
-  - DOCKER_USERNAME=$DOCKER_USERNAME DOCKER_PASSWORD=$DOCKER_PASSWORD SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make build
-
+  - SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make package
+  - SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make qa
 matrix:
   include:
     - env: SERVICE=recipes-api
