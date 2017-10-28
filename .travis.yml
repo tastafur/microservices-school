@@ -22,8 +22,8 @@ before_install:
   - docker ps
 
 script:
-  - echo $SERVICE_ENV
   - make qa
+  - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
 
 matrix:
   include:

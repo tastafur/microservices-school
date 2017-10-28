@@ -33,6 +33,7 @@
     "supertest-as-promised": "^4.0.2"
   },
   "dependencies": {
+    "make-manifest": "^1.0.1",
     "R": "0.0.1",
     "aws-sdk": "^2.94.0",
     "body-parser": "^1.15.2",
